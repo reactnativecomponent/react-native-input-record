@@ -10,10 +10,10 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class RNInputRecordPackage implements ReactPackage {
+public class InputRecordPackage implements ReactPackage {
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-      return Arrays.<NativeModule>asList(new RNInputRecordModule(reactContext));
+      return Arrays.<NativeModule>asList(new InputRecordModule(reactContext));
     }
 
     @Override
@@ -23,6 +23,9 @@ public class RNInputRecordPackage implements ReactPackage {
 
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-      return Collections.emptyList();
+      return Arrays.<ViewManager>asList(
+              new RecordViewManager(),
+              new TimerTipManager()
+      );
     }
 }
