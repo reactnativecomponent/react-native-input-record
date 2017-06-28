@@ -162,7 +162,7 @@
     tipLabel.text = @"手指上滑，取消录音";
     tipLabel.textColor = [UIColor whiteColor];
     tipLabel.backgroundColor = [UIColor clearColor];
-    if ([_time integerValue] >0){
+    if (([_time integerValue] >0)&&([_time integerValue] <10)){
         tipsNumLabel.hidden = NO;
         leftImage.hidden = YES;
         rightImage.hidden = YES;
