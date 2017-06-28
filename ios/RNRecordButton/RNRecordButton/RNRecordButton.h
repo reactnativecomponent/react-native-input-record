@@ -29,6 +29,7 @@
 @property (assign, nonatomic) id<RNRecordDelegate> delegate;
 @property (copy, nonatomic) RCTBubblingEventBlock onChange;
 @property (copy, nonatomic) NSArray *textArr;
+@property (copy, nonatomic) NSString *fontSize;
 - (void)setButtonStateWithRecording;
 - (void)setButtonStateWithNormal;
 - (void)setButtonStateWithCancel;

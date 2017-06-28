@@ -25,7 +25,7 @@ RCT_EXPORT_MODULE()
 
 RCT_EXPORT_VIEW_PROPERTY(onChange, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(textArr, NSArray);
-
+RCT_EXPORT_VIEW_PROPERTY(fontSize, NSString);
 
 - (UIView *)view{
     //实际组件的具体大小由js控制

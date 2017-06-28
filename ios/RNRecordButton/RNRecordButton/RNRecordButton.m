@@ -21,7 +21,7 @@
 
         [self setTitle:@"按住 说话" forState:UIControlStateNormal];
         [self setTitleColor:[UIColor darkGrayColor] forState:UIControlStateNormal];
-        
+        self.titleLabel.font = [UIFont systemFontOfSize:16];
         self.layer.cornerRadius = 5.0f;
         self.layer.borderWidth = 0.5;
         self.layer.borderColor = [UIColor colorWithWhite:0.6 alpha:1.0].CGColor;
@@ -45,6 +45,14 @@
     _textArr = textArr;
 }
 
+- (void)setFontSize:(NSString *)fontSize{
+    if (fontSize) {
+        CGFloat tmpFont = [fontSize floatValue];
+        CGFloat font = tmpFont>0?tmpFont:16.0;
+        self.titleLabel.font = [UIFont systemFontOfSize:font];
+    }
+    _fontSize = fontSize;
+}
 
 - (void)setButtonStateWithRecording
 {
