@@ -1,6 +1,9 @@
 package com.input.record;
 
 import android.app.Activity;
+import android.graphics.Color;
+import android.graphics.drawable.GradientDrawable;
+import android.graphics.drawable.StateListDrawable;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
@@ -36,11 +39,49 @@ public class RecordViewManager extends SimpleViewManager<Button> {
     protected Button createViewInstance(ThemedReactContext reactContext) {
         context = reactContext;
         button = new Button(reactContext);
-        button.setBackgroundResource(R.drawable.nim_message_input_edittext_box);
+//        button.setBackgroundResource(R.drawable.nim_message_input_edittext_box);
         button.setTextColor(context.getResources().getColor(R.color.color_black_333333));
+        button.setTextSize(16);
         button.setText("按住 说话");
+
+        StateListDrawable s = new StateListDrawable();
+
+        GradientDrawable d = new GradientDrawable();
+        d.setStroke(1, Color.GRAY, 0, 0);
+        d.setShape(GradientDrawable.RECTANGLE);
+
+        d.setGradientRadius(10);
+        d.setGradientType(GradientDrawable.LINEAR_GRADIENT);
+        d.setCornerRadius(5);
+        d.setColor(Color.DKGRAY);
+        s.addState(new int[]{android.R.attr.state_pressed},d);
+
+        d = new GradientDrawable();
+        d.setStroke(1, Color.GRAY, 0, 0);
+        d.setShape(GradientDrawable.RECTANGLE);
+
+        d.setGradientRadius(10);
+        d.setGradientType(GradientDrawable.LINEAR_GRADIENT);
+        d.setCornerRadius(5);
+        d.setColor(Color.WHITE);
+        s.addState(new int[]{},d);
+
+        button.setBackground(s);
         initAudioRecordButton(button);
+
+
         return button;
+    }
+
+    @ReactProp(name = "fontSize")
+    public void setFontSize(Button view, String fontSize) {
+        int size = 16;
+        try {
+            size = Integer.parseInt(fontSize);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        button.setTextSize(size);
     }
 
     @ReactProp(name = "textArr")
@@ -76,9 +117,7 @@ public class RecordViewManager extends SimpleViewManager<Button> {
 //                    touched = true;
                     cancelAudioRecord(isCancelled(v, event));
                     updateStatus(isCancelled(v, event) ? UpdateStatus.Move : UpdateStatus.Continue);
-
                 }
-
                 return false;
             }
         });

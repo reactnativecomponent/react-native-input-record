@@ -10,7 +10,9 @@
 #import "RecordView.h"
 #import "RNRecordButton.h"
 
-@interface RecordView()<RNRecordDelegate>
+@interface RecordView()<RNRecordDelegate>{
+    RNRecordButton *recordBtn;
+}
 
 @end
 
@@ -27,9 +29,13 @@ RCT_EXPORT_VIEW_PROPERTY(onChange, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(textArr, NSArray);
 RCT_EXPORT_VIEW_PROPERTY(fontSize, NSString);
 
+RCT_EXPORT_METHOD(setButtonStateWithNormal){
+    [recordBtn setButtonStateWithNormal];//恢复未点击状态
+}
+
 - (UIView *)view{
     //实际组件的具体大小由js控制
-    RNRecordButton *recordBtn = [[RNRecordButton alloc]init];
+    recordBtn = [[RNRecordButton alloc]init];
     recordBtn.delegate = self;
     return recordBtn;
 }
@@ -38,14 +44,14 @@ RCT_EXPORT_VIEW_PROPERTY(fontSize, NSString);
 
 - (void)recordTouchDownAction:(RNRecordButton *)btn{
     NSLog(@"开始录音");
-    if (btn.highlighted) {
-        btn.highlighted = YES;
+    if (!btn.selected) {
+        btn.selected = YES;
         [btn setButtonStateWithRecording];
+        if (!btn.onChange) {
+            return;
+        }
+        btn.onChange(@{@"status":@"Start"});
     }
-    if (!btn.onChange) {
-        return;
-    }
-    btn.onChange(@{@"status":@"Start"});
 }
 - (void)recordTouchUpOutsideAction:(RNRecordButton *)btn{
     NSLog(@"取消录音");
@@ -71,21 +77,25 @@ RCT_EXPORT_VIEW_PROPERTY(fontSize, NSString);
 }
 //中间状态  从 TouchDragOutside ---> TouchDragInside
 - (void)recordTouchDragEnterAction:(RNRecordButton *)btn{
-    NSLog(@"继续录音");
-    [btn setButtonStateWithRecording];
-    if (!btn.onChange) {
-        return;
+    if (btn.selected) {
+        NSLog(@"继续录音");
+        [btn setButtonStateWithRecording];
+        if (!btn.onChange) {
+            return;
+        }
+        btn.onChange(@{@"status":@"Continue"});
     }
-    btn.onChange(@{@"status":@"Continue"});
 }
 //中间状态  从 TouchDragInside ---> TouchDragOutside
 - (void)recordTouchDragExitAction:(RNRecordButton *)btn{
-    NSLog(@"将要取消录音");
-    [btn setButtonStateWithCancel];
-    if (!btn.onChange) {
-        return;
+    if (btn.selected) {
+        NSLog(@"将要取消录音");
+        [btn setButtonStateWithCancel];
+        if (!btn.onChange) {
+            return;
+        }
+        btn.onChange(@{@"status":@"Move"});
     }
-    btn.onChange(@{@"status":@"Move"});
 }
 
 

@@ -17,11 +17,17 @@ RCTTimerTip.propTypes = {
     level:PropTypes.string,
     time:PropTypes.string,
     numFontSize:PropTypes.string,
-    status:PropTypes.string,
+    status:PropTypes.string,//0正在录音，1，取消发送，2，录音时间过短
 };
 const TimerTip = requireNativeComponent('TimerTip', RCTTimerTip);
 
 export class RCTRecordView extends Component {
+    /**
+     * 时间过长后，调用该方法恢复按钮为未点击状态
+     */
+    static setButtonStateWithNormal(){
+        return RecordView.setButtonStateWithNormal();
+    }
 
     _onchange = (event) => {
         if (this.props.onChange && event.nativeEvent) {
@@ -31,7 +37,7 @@ export class RCTRecordView extends Component {
 
     render() {
         return (
-            <RecordView
+            <RecordViewApi
                 {...this.props}
                 onChange={this._onchange}
             />);
@@ -43,4 +49,4 @@ RCTRecordView.propTypes = {
     onChange: PropTypes.func,
     fontSize: PropTypes.string,
 };
-const RecordView = requireNativeComponent('RecordView', RCTRecordView);
+const RecordViewApi = requireNativeComponent('RecordView', RCTRecordView);

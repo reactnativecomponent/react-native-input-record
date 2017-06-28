@@ -10,6 +10,8 @@
 		4E214A471F02570C00B2DF47 /* RNRecordButton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E214A461F02570C00B2DF47 /* RNRecordButton.m */; };
 		4E214A481F02570C00B2DF47 /* RNRecordButton.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 4E214A451F02570C00B2DF47 /* RNRecordButton.h */; };
 		4E214A591F02590E00B2DF47 /* RecordView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E214A581F02590E00B2DF47 /* RecordView.m */; };
+		4E3F6F1F1F038CC600CB7FB2 /* TimerTip.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E3F6F1E1F038CC600CB7FB2 /* TimerTip.m */; };
+		4E3F6F221F038D0200CB7FB2 /* RNRecordTipsView.m in Sources */ = {isa = PBXBuildFile; fileRef = 4E3F6F211F038D0200CB7FB2 /* RNRecordTipsView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -31,6 +33,20 @@
 		4E214A461F02570C00B2DF47 /* RNRecordButton.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RNRecordButton.m; sourceTree = "<group>"; };
 		4E214A571F02590E00B2DF47 /* RecordView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RecordView.h; sourceTree = "<group>"; };
 		4E214A581F02590E00B2DF47 /* RecordView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RecordView.m; sourceTree = "<group>"; };
+		4E3F6F1D1F038CC600CB7FB2 /* TimerTip.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TimerTip.h; sourceTree = "<group>"; };
+		4E3F6F1E1F038CC600CB7FB2 /* TimerTip.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TimerTip.m; sourceTree = "<group>"; };
+		4E3F6F201F038D0200CB7FB2 /* RNRecordTipsView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RNRecordTipsView.h; sourceTree = "<group>"; };
+		4E3F6F211F038D0200CB7FB2 /* RNRecordTipsView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RNRecordTipsView.m; sourceTree = "<group>"; };
+		4E3F6F3A1F03A2DA00CB7FB2 /* cancel.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = cancel.png; sourceTree = "<group>"; };
+		4E3F6F3B1F03A2DA00CB7FB2 /* recorder.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = recorder.png; sourceTree = "<group>"; };
+		4E3F6F3C1F03A2DA00CB7FB2 /* v1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = v1.png; sourceTree = "<group>"; };
+		4E3F6F3D1F03A2DA00CB7FB2 /* v2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = v2.png; sourceTree = "<group>"; };
+		4E3F6F3E1F03A2DA00CB7FB2 /* v3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = v3.png; sourceTree = "<group>"; };
+		4E3F6F3F1F03A2DA00CB7FB2 /* v4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = v4.png; sourceTree = "<group>"; };
+		4E3F6F401F03A2DA00CB7FB2 /* v5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = v5.png; sourceTree = "<group>"; };
+		4E3F6F411F03A2DA00CB7FB2 /* v6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = v6.png; sourceTree = "<group>"; };
+		4E3F6F421F03A2DA00CB7FB2 /* v7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = v7.png; sourceTree = "<group>"; };
+		4E3F6F431F03A2DA00CB7FB2 /* voice_to_short.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = voice_to_short.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,12 +79,34 @@
 		4E214A441F02570C00B2DF47 /* RNRecordButton */ = {
 			isa = PBXGroup;
 			children = (
+				4E3F6F391F03A2DA00CB7FB2 /* recordViewIMG */,
 				4E214A451F02570C00B2DF47 /* RNRecordButton.h */,
 				4E214A461F02570C00B2DF47 /* RNRecordButton.m */,
 				4E214A571F02590E00B2DF47 /* RecordView.h */,
 				4E214A581F02590E00B2DF47 /* RecordView.m */,
+				4E3F6F201F038D0200CB7FB2 /* RNRecordTipsView.h */,
+				4E3F6F211F038D0200CB7FB2 /* RNRecordTipsView.m */,
+				4E3F6F1D1F038CC600CB7FB2 /* TimerTip.h */,
+				4E3F6F1E1F038CC600CB7FB2 /* TimerTip.m */,
 			);
 			path = RNRecordButton;
+			sourceTree = "<group>";
+		};
+		4E3F6F391F03A2DA00CB7FB2 /* recordViewIMG */ = {
+			isa = PBXGroup;
+			children = (
+				4E3F6F3A1F03A2DA00CB7FB2 /* cancel.png */,
+				4E3F6F3B1F03A2DA00CB7FB2 /* recorder.png */,
+				4E3F6F3C1F03A2DA00CB7FB2 /* v1.png */,
+				4E3F6F3D1F03A2DA00CB7FB2 /* v2.png */,
+				4E3F6F3E1F03A2DA00CB7FB2 /* v3.png */,
+				4E3F6F3F1F03A2DA00CB7FB2 /* v4.png */,
+				4E3F6F401F03A2DA00CB7FB2 /* v5.png */,
+				4E3F6F411F03A2DA00CB7FB2 /* v6.png */,
+				4E3F6F421F03A2DA00CB7FB2 /* v7.png */,
+				4E3F6F431F03A2DA00CB7FB2 /* voice_to_short.png */,
+			);
+			path = recordViewIMG;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -130,6 +168,8 @@
 			files = (
 				4E214A471F02570C00B2DF47 /* RNRecordButton.m in Sources */,
 				4E214A591F02590E00B2DF47 /* RecordView.m in Sources */,
+				4E3F6F1F1F038CC600CB7FB2 /* TimerTip.m in Sources */,
+				4E3F6F221F038D0200CB7FB2 /* RNRecordTipsView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
