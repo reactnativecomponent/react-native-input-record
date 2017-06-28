@@ -65,6 +65,7 @@
 {
     self.backgroundColor = kGetColor(247, 247, 247);
     NSString *strNormal = (_textArr.count>0)?[_textArr firstObject]:@"";
+    self.selected = NO;
     [self setTitle:strNormal forState:UIControlStateNormal];
 }
 
