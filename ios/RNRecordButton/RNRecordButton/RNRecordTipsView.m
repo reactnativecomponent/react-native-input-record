@@ -24,7 +24,7 @@
     
     if (self = [super initWithFrame:frame]) {
         
-        self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
+//        self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
         self.layer.cornerRadius = 6.0f;
         [self addContent];
         
@@ -110,7 +110,7 @@
         NSLog(@"countDownTime:%@",time);
         if ([time integerValue]==0) {//显示时间过长
             [self showVieWithTimeLong];
-        }else{
+        }else if([time integerValue]<10){
             tipsNumLabel.text = [NSString stringWithFormat:@"%@",time];
             if ([self.status integerValue] == UIRecordSoundStatusRecoding) {
                 tipsNumLabel.hidden = NO;
@@ -133,7 +133,8 @@
 }
 
 - (void)layoutSubviews{
-    NSLog(@"layoutSubviews");
+    NSLog(@"--layoutSubviews");
+    self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
     CGFloat viewH = self.frame.size.height;
     CGFloat viewW = self.frame.size.width;
     CGFloat tipsH = 30;
