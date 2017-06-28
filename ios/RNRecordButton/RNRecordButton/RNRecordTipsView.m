@@ -25,7 +25,6 @@
     if (self = [super initWithFrame:frame]) {
         
         self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
-        self.hidden = YES;
         self.layer.cornerRadius = 6.0f;
         [self addContent];
         

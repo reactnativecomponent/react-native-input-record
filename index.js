@@ -1,6 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {View, requireNativeComponent,NativeModules} from 'react-native';
 const { RNInputRecord } = NativeModules;
+const { RecordView } = NativeModules;
 
 export default RNInputRecord;
 export class RCTTimerTip extends Component {
@@ -17,11 +18,17 @@ RCTTimerTip.propTypes = {
     level:PropTypes.string,
     time:PropTypes.string,
     numFontSize:PropTypes.string,
-    status:PropTypes.number,
+    status:PropTypes.string,//0正在录音，1，取消发送，2，录音时间过短
 };
 const TimerTip = requireNativeComponent('TimerTip', RCTTimerTip);
 
 export class RCTRecordView extends Component {
+    /**
+     * 时间过长后，调用该方法恢复按钮为未点击状态
+     */
+    static setButtonStateWithNormal(){
+        return RecordView.setButtonStateWithNormal();
+    }
 
     _onchange = (event) => {
         if (this.props.onChange && event.nativeEvent) {
