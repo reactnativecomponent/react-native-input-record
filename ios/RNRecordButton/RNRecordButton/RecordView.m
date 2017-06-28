@@ -10,7 +10,9 @@
 #import "RecordView.h"
 #import "RNRecordButton.h"
 
-@interface RecordView()<RNRecordDelegate>
+@interface RecordView()<RNRecordDelegate>{
+    RNRecordButton *recordBtn;
+}
 
 @end
 
@@ -27,9 +29,13 @@ RCT_EXPORT_VIEW_PROPERTY(onChange, RCTBubblingEventBlock)
 RCT_EXPORT_VIEW_PROPERTY(textArr, NSArray);
 RCT_EXPORT_VIEW_PROPERTY(fontSize, NSString);
 
+RCT_EXPORT_METHOD(setButtonStateWithNormal){
+    [recordBtn setButtonStateWithNormal];//恢复未点击状态
+}
+
 - (UIView *)view{
     //实际组件的具体大小由js控制
-    RNRecordButton *recordBtn = [[RNRecordButton alloc]init];
+    recordBtn = [[RNRecordButton alloc]init];
     recordBtn.delegate = self;
     return recordBtn;
 }
