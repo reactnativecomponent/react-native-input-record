@@ -3,29 +3,34 @@
     android:id="@+id/layoutPlayAudio"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:layout_gravity="center"
+    android:layout_gravity="bottom|center_horizontal"
     android:background="@drawable/nim_dialog_toast_bg">
 
-    <ImageView
-        android:layout_gravity="center"
-        android:layout_width="48dp"
-        android:layout_height="48dp"
-        android:id="@+id/progress"
-        android:src="@drawable/microphone" />
     <LinearLayout
-        android:id="@+id/timer_tip_container"
-        android:layout_width="188dp"
-        android:layout_height="40dp"
-        android:layout_gravity="bottom"
-        android:gravity="center">
+        android:id="@+id/timer_tip_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:padding="5dp"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/progress"
+            android:layout_width="72dp"
+            android:layout_height="72dp"
+            android:layout_gravity="center"
+            android:src="@drawable/microphone" />
 
         <TextView
+            android:layout_marginTop="20dp"
             android:id="@+id/timer_tip"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
+            android:gravity="center"
+            android:padding="3dp"
             android:text="@string/recording_cancel"
             android:textColor="@color/white"
-            android:textSize="20sp" />
+            android:textSize="14sp" />
     </LinearLayout>
 </FrameLayout>

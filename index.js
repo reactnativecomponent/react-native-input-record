@@ -17,7 +17,7 @@ RCTTimerTip.propTypes = {
     level:PropTypes.string,
     time:PropTypes.string,
     numFontSize:PropTypes.string,
-    status:PropTypes.number,
+    status:PropTypes.string,
 };
 const TimerTip = requireNativeComponent('TimerTip', RCTTimerTip);
 
