@@ -14,7 +14,10 @@ export class RCTTimerTip extends Component {
 }
 RCTTimerTip.propTypes = {
     ...View.propTypes,
-    level:PropTypes.number,
+    level:PropTypes.string,
+    time:PropTypes.string,
+    numFontSize:PropTypes.string,
+    status:PropTypes.number,
 };
 const TimerTip = requireNativeComponent('TimerTip', RCTTimerTip);
 
