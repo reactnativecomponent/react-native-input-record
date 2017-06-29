@@ -25,7 +25,7 @@ public class TimerTipManager extends SimpleViewManager<View> {
     private View timerTipLayout;
 
     private int timerStatus = 0;
-    private String[] timerTip = {"录音时间太短", "手指上滑，取消发送", "松开手指，取消发送", "录音时间过长"};
+    private String[] timerTip = { "手指上滑，取消发送", "松开手指，取消发送","录音时间太短", "录音时间过长"};
     GradientDrawable bgDrawable;
     private String time;
 
@@ -78,7 +78,7 @@ public class TimerTipManager extends SimpleViewManager<View> {
     @ReactProp(name = "time")
     public void setLastTime(View view, String time) {
         this.time = time;
-        if (timerStatus == 1 && !TextUtils.isEmpty(time))
+        if (timerStatus == 0 && !TextUtils.isEmpty(time))
             timerTipText.setText(String.format(LAST_TIME, time));
     }
 
@@ -89,15 +89,15 @@ public class TimerTipManager extends SimpleViewManager<View> {
 
     void updateImageStatus(int status) {
         switch (status) {
-            case 0:
+            case 2:
             case 3:
                 imageView.setImageResource(R.drawable.voice_to_short);
                 break;
 
-            case 1:
+            case 0:
                 imageView.setImageResource(R.drawable.microphone);
                 break;
-            case 2:
+            case 1:
                 imageView.setImageResource(R.drawable.cancel);
                 break;
         }
@@ -109,13 +109,13 @@ public class TimerTipManager extends SimpleViewManager<View> {
         if (status < 0 || status > 3) {
             updateS = 0;
         }
-        if (updateS == 1 && !TextUtils.isEmpty(time)) {
+        if (updateS == 0 && !TextUtils.isEmpty(time)) {
             timerTipText.setText(String.format(LAST_TIME, time));
         } else {
             timerTipText.setText(timerTip[updateS]);
         }
 
-        if (updateS == 2) {
+        if (updateS == 1) {
             bgDrawable.setColor(Color.RED);
         } else {
             bgDrawable.setColor(Color.TRANSPARENT);

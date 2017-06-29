@@ -11,21 +11,33 @@ import java.util.Collections;
 import java.util.List;
 
 public class InputRecordPackage implements ReactPackage {
+
+    TimerTipManager timerTipManager;
+
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-      return Arrays.<NativeModule>asList(new InputRecordModule(reactContext));
+        if (timerTipManager == null) {
+            timerTipManager = new TimerTipManager();
+        }
+        return Arrays.<NativeModule>asList(
+                new InputRecordModule(reactContext),
+                timerTipManager
+        );
     }
 
     @Override
     public List<Class<? extends JavaScriptModule>> createJSModules() {
-      return Collections.emptyList();
+        return Collections.emptyList();
     }
 
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-      return Arrays.<ViewManager>asList(
-              new RecordViewManager(),
-              new TimerTipManager()
-      );
+        if (timerTipManager == null) {
+            timerTipManager = new TimerTipManager();
+        }
+        return Arrays.<ViewManager>asList(
+                new RecordViewManager(),
+                timerTipManager
+        );
     }
 }
