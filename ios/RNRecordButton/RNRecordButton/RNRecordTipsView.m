@@ -25,7 +25,7 @@
     if (self = [super initWithFrame:frame]) {
         
 //        self.backgroundColor = [UIColor colorWithWhite:0 alpha:0.4];
-        self.layer.cornerRadius = 6.0f;
+//        self.layer.cornerRadius = 6.0f;
         [self addContent];
         
     }
@@ -41,7 +41,6 @@
     tipLabel.font = [UIFont systemFontOfSize:14];
     tipLabel.textAlignment = NSTextAlignmentCenter;
     tipLabel.layer.cornerRadius = 4.0f;
-    tipLabel.clipsToBounds = YES;
     
     leftImage = [[UIImageView alloc] init];
     leftImage.hidden = YES;
@@ -162,7 +161,7 @@
     tipLabel.text = @"手指上滑，取消录音";
     tipLabel.textColor = [UIColor whiteColor];
     tipLabel.backgroundColor = [UIColor clearColor];
-    if ([_time integerValue] >0){
+    if (([_time integerValue] >0)&&([_time integerValue] <10)){
         tipsNumLabel.hidden = NO;
         leftImage.hidden = YES;
         rightImage.hidden = YES;
