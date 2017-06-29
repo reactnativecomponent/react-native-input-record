@@ -20,6 +20,7 @@ public class TimerTipManager extends SimpleViewManager<View> {
 
     final static String LAST_TIME = "还可以说%s秒";
     final static String TCT_NAME = "TimerTip";
+    final static int TIP_COLOR = 0Xcc882D2C;
     private ImageView imageView;
     private TextView timerTipText;
     private View timerTipLayout;
@@ -51,17 +52,22 @@ public class TimerTipManager extends SimpleViewManager<View> {
 
         bgDrawable.setGradientRadius(10);
         bgDrawable.setGradientType(GradientDrawable.LINEAR_GRADIENT);
-        bgDrawable.setCornerRadius(5);
-        bgDrawable.setColor(Color.RED);
+        bgDrawable.setCornerRadius(7);
+        bgDrawable.setColor(TIP_COLOR);
 
         return root;
     }
 
     @ReactProp(name = "level")
     public void setLevel(View view, String level) {
-        int le = Integer.parseInt(level);
-        if (timerStatus == 1)
-            imageView.getDrawable().setLevel(3000 + 6000 * le / 100);
+        int le = 0;
+        try {
+            le = Integer.parseInt(level);
+        } catch (NumberFormatException e) {
+            e.printStackTrace();
+        }
+        if (timerStatus == 0)
+            imageView.getDrawable().setLevel(3700 + 6300 * le / 100);
     }
 
     @ReactProp(name = "status")
@@ -116,8 +122,10 @@ public class TimerTipManager extends SimpleViewManager<View> {
         }
 
         if (updateS == 1) {
-            bgDrawable.setColor(Color.RED);
+            bgDrawable.setStroke(1, Color.DKGRAY, 0, 0);
+            bgDrawable.setColor(TIP_COLOR);
         } else {
+            bgDrawable.setStroke(0, Color.TRANSPARENT, 0, 0);
             bgDrawable.setColor(Color.TRANSPARENT);
         }
         timerTipText.setBackground(bgDrawable);

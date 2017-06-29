@@ -27,6 +27,8 @@ import com.facebook.react.uimanager.events.RCTEventEmitter;
 public class RecordViewManager extends SimpleViewManager<Button> {
 
     final static String TCT_NAME = "RecordView";
+    final static int COLOR_PRESS = 0XeeDEDEDE;
+    final static int COLOR_DEFAULT = 0XeeF4F3F4;
     private ReactContext context;
     private Button button;
     private String[] text = new String[3];
@@ -53,8 +55,8 @@ public class RecordViewManager extends SimpleViewManager<Button> {
 
         d.setGradientRadius(10);
         d.setGradientType(GradientDrawable.LINEAR_GRADIENT);
-        d.setCornerRadius(5);
-        d.setColor(Color.DKGRAY);
+        d.setCornerRadius(10);
+        d.setColor(COLOR_PRESS);
         s.addState(new int[]{android.R.attr.state_selected}, d);
 
         d = new GradientDrawable();
@@ -63,8 +65,8 @@ public class RecordViewManager extends SimpleViewManager<Button> {
 
         d.setGradientRadius(10);
         d.setGradientType(GradientDrawable.LINEAR_GRADIENT);
-        d.setCornerRadius(5);
-        d.setColor(Color.WHITE);
+        d.setCornerRadius(10);
+        d.setColor(COLOR_DEFAULT);
         s.addState(new int[]{}, d);
 
         button.setBackground(s);
