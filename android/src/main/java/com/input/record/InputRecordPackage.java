@@ -12,16 +12,15 @@ import java.util.List;
 
 public class InputRecordPackage implements ReactPackage {
 
-    TimerTipManager timerTipManager;
+    RecordViewManager recordViewManager;
 
     @Override
     public List<NativeModule> createNativeModules(ReactApplicationContext reactContext) {
-        if (timerTipManager == null) {
-            timerTipManager = new TimerTipManager();
+        if (recordViewManager == null) {
+            recordViewManager = new RecordViewManager();
         }
         return Arrays.<NativeModule>asList(
-                new InputRecordModule(reactContext),
-                timerTipManager
+                recordViewManager
         );
     }
 
@@ -32,12 +31,12 @@ public class InputRecordPackage implements ReactPackage {
 
     @Override
     public List<ViewManager> createViewManagers(ReactApplicationContext reactContext) {
-        if (timerTipManager == null) {
-            timerTipManager = new TimerTipManager();
+        if (recordViewManager == null) {
+            recordViewManager = new RecordViewManager();
         }
         return Arrays.<ViewManager>asList(
-                new RecordViewManager(),
-                timerTipManager
+                new TimerTipManager(),
+                recordViewManager
         );
     }
 }

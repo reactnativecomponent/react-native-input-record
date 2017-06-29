@@ -11,6 +11,7 @@ import android.widget.Button;
 
 import com.facebook.react.bridge.Arguments;
 import com.facebook.react.bridge.ReactContext;
+import com.facebook.react.bridge.ReactMethod;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableType;
 import com.facebook.react.bridge.WritableMap;
@@ -54,7 +55,7 @@ public class RecordViewManager extends SimpleViewManager<Button> {
         d.setGradientType(GradientDrawable.LINEAR_GRADIENT);
         d.setCornerRadius(5);
         d.setColor(Color.DKGRAY);
-        s.addState(new int[]{android.R.attr.state_pressed},d);
+        s.addState(new int[]{android.R.attr.state_selected}, d);
 
         d = new GradientDrawable();
         d.setStroke(1, Color.GRAY, 0, 0);
@@ -64,7 +65,7 @@ public class RecordViewManager extends SimpleViewManager<Button> {
         d.setGradientType(GradientDrawable.LINEAR_GRADIENT);
         d.setCornerRadius(5);
         d.setColor(Color.WHITE);
-        s.addState(new int[]{},d);
+        s.addState(new int[]{}, d);
 
         button.setBackground(s);
         initAudioRecordButton(button);
@@ -95,6 +96,18 @@ public class RecordViewManager extends SimpleViewManager<Button> {
         }
         if (text.length > 0) {
             button.setText(text[0]);
+        }
+    }
+
+    @ReactMethod
+    public void setButtonStateWithNormal() {
+        if (text.length > 0 && button != null) {
+            button.post(new Runnable() {
+                @Override
+                public void run() {
+                    button.setText(text[0]);
+                }
+            });
         }
     }
 
@@ -158,6 +171,7 @@ public class RecordViewManager extends SimpleViewManager<Button> {
         if (text.length > 1) {
             button.setText(text[1]);
         }
+        button.setSelected(false);
     }
 
     private static boolean isCancelled(View view, MotionEvent event) {
@@ -189,6 +203,7 @@ public class RecordViewManager extends SimpleViewManager<Button> {
         }
 //        audioRecordBtn.setBackgroundResource(R.drawable.nim_message_input_edittext_box);
 //        stopAudioRecordAnim();
+        button.setSelected(false);
     }
 
     /**
@@ -207,6 +222,7 @@ public class RecordViewManager extends SimpleViewManager<Button> {
 //        }
 //
 //        cancelled = cancel;
+        button.setSelected(true);
         updateTimerTip(cancel);
     }
 

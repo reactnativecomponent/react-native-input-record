@@ -1,8 +1,7 @@
 import React, {Component, PropTypes} from 'react';
 import {View, requireNativeComponent,NativeModules} from 'react-native';
-const { RNInputRecord } = NativeModules;
+const { RecordView } = NativeModules;
 
-export default RNInputRecord;
 export class RCTTimerTip extends Component {
 
     render() {
